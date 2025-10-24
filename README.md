@@ -1,6 +1,8 @@
 # selectorllm
- Generate CSS/XPath selectors from natural language using LLMs.  Extract HTML data without writing selectors manually.
+Generate CSS/XPath selectors from natural language using LLMs.  Extract HTML data without writing selectors manually.
+
 ---
+
 自然言語でHTMLセレクタを生成 - LLMによる自動抽出
 ## Usage
 ```python
