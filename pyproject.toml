@@ -15,6 +15,15 @@ dev = [
     "python-dotenv>=1.1.1",
 ]
 
+[project.optional-dependencies]
+agentic = [
+    "beautifulsoup4>=4.14.2",
+    "langgraph>=1.0.1",
+]
+all = [
+    "selectorllm[agentic]",
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]

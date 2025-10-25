@@ -6,12 +6,12 @@ Generate CSS/XPath selectors from natural language using LLMs.  Extract HTML dat
 自然言語でHTMLセレクタを生成 - LLMによる自動抽出
 ## Usage
 ```python
-from selectorllm.main import getSelector
+from selectorllm.main import get_selector
 
 html = """<html>...</html>"""
 query = "Extract link texts."
 
-selector = getSelector(
+selector = get_selector(
     query,
     html,
     model="openrouter/openai/gpt-5", # Any LiteLLM-compatible model name

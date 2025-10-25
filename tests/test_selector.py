@@ -1,6 +1,6 @@
 import pytest
 from bs4 import BeautifulSoup
-from selectorllm.main import getSelector
+from selectorllm.main import get_selector
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -47,7 +47,7 @@ SAMPLE_HTML = """
 def test_title_selector_extracts_correct_content():
     """タイトルを取得するセレクタが正しく動作するかテスト"""
     query = "Please extract the title of the webpage."
-    selector = getSelector(
+    selector = get_selector(
         query, SAMPLE_HTML, 
         model="openrouter/openai/gpt-5", 
         selector_type="css"
@@ -68,7 +68,7 @@ def test_title_selector_extracts_correct_content():
 def test_title_selector_returns_valid_css_selector():
     """生成されたセレクタが有効なCSS Selectorの形式であることをテスト"""
     query = "Please extract the title of the webpage."
-    selector = getSelector(
+    selector = get_selector(
         query, SAMPLE_HTML,
         model="openrouter/openai/gpt-5",
         selector_type="css"
@@ -93,7 +93,7 @@ def test_title_selector_returns_valid_css_selector():
 ])
 def test_various_selectors(query, expected_text):
     """様々なクエリでセレクタが正しく動作するかテスト"""
-    selector = getSelector(
+    selector = get_selector(
         query, SAMPLE_HTML,
         model="openrouter/openai/gpt-5",
         selector_type="css"
@@ -110,7 +110,7 @@ def test_various_selectors(query, expected_text):
 def test_selector_handles_multiple_matches():
     """複数の要素にマッチする場合の挙動をテスト"""
     query = "Get all paragraphs"
-    selector = getSelector(
+    selector = get_selector(
         query, SAMPLE_HTML,
         model="openrouter/openai/gpt-5",
         selector_type="css"
@@ -138,7 +138,7 @@ def test_selector_with_different_models():
     
     for model in models:
         try:
-            selector = getSelector(query, SAMPLE_HTML, model=model, selector_type="css")
+            selector = get_selector(query, SAMPLE_HTML, model=model, selector_type="css")
             soup = BeautifulSoup(SAMPLE_HTML, "html.parser")
             result = soup.select_one(selector)
             assert result is not None, f"Model {model} generated invalid selector: '{selector}'"
